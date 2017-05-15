@@ -2,26 +2,28 @@ require 'bcrypt'
 
 class User
   include DataMapper::Resource
+  include BCrypt
 
-  property :id,         Serial
-  property :name,       String
-  property :email,              String
-  property :password_digest,    Text
+  property :id,              Serial
+  property :email,           String
+  property :first_name,      String
+  property :last_name,       String
+  property :password_hash,         Text
 
-
+  attr_reader :password
 
   def password=(password)
-    @password = password
-    self.password_digest = BCrypt::Password.create(password)
+    @password = Password.create(password)
+    self.password_hash = @password
   end
 
   def self.authenticate(email, password)
-     user = first(email: email)
-     if user && BCrypt::Password.new(user.password_digest) == password
-       user
-     else
-       nil
-     end
-   end
-
+    user = first(email: email)
+    if user && BCrypt::Password.new(user.password_hash) == password
+      user
+    else
+      nil
+    end
+  end
+  
 end
