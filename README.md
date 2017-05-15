@@ -1,5 +1,10 @@
 User stories
 
+***FIRST COMMIT***
+
+Sandy and Daniel workingon the Log in and Out Feature
+
+
 ```
 "As a user
 So I can use AirBnB
