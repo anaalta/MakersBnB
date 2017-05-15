@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/sandy-cochrane/Projects/MakersBnB/app.rb": [
+      "/Users/danielcostea/Desktop/MakersBnB/app.rb": [
         1,
         1,
         1,
@@ -9,14 +9,18 @@
         1,
         null,
         1,
+        0,
         null,
         null,
+        1,
+        null,
+        1,
         null,
         null,
         1,
         null
       ],
-      "/Users/sandy-cochrane/Projects/MakersBnB/data_mapper_setup.rb": [
+      "/Users/danielcostea/Desktop/MakersBnB/data_mapper_setup.rb": [
         1,
         1,
         1,
@@ -25,18 +29,44 @@
         1,
         1
       ],
-      "/Users/sandy-cochrane/Projects/MakersBnB/models/user.rb": [
-        null,
+      "/Users/danielcostea/Desktop/MakersBnB/models/user.rb": [
+        1,
         null,
         1,
         1,
         null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/danielcostea/Desktop/MakersBnB/spec/features/sign_in_spec.rb": [
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
         1,
         1,
         null,
         null
       ]
     },
-    "timestamp": 1494855005
+    "timestamp": 1494856780
   }
 }

@@ -5,9 +5,13 @@ require_relative './data_mapper_setup.rb'
 class MakersBnB < Sinatra::Base
 
     get '/' do
-      "Welcome to MakersBNB!"
+      erb :index
     end
 
+    get '/sessions/new' do
+
+        erb :sessions
+    end
 
   run! if app_file == $0
 end
