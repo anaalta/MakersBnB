@@ -2,19 +2,14 @@
   "RSpec": {
     "coverage": {
       "/Users/sandy-cochrane/Projects/MakersBnB/spec/features/sign_in_spec.rb": [
-        null,
         1,
         null,
         1,
         1,
-        0,
+        1,
+        1,
         null,
         null,
-        1,
-        1,
-        1,
-        1,
-        1,
         null,
         null,
         null
@@ -25,12 +20,12 @@
         1,
         1,
         null,
-        0,
-        0,
+        1,
+        2,
         null,
         null
       ]
     },
-    "timestamp": 1494864744
+    "timestamp": 1494868130
   }
 }
