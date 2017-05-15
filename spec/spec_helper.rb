@@ -1,26 +1,16 @@
+ENV['RACK_ENV'] ||= 'test'
+
 require 'simplecov'
 require 'simplecov-console'
 require 'web_helpers'
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  # Want a nice code coverage website? Uncomment this next line!
-  # SimpleCov::Formatter::HTMLFormatter
-])
-SimpleCov.start
-
-ENV['RACK_ENV'] ||= 'test'
-
-# require our Sinatra app file
+require 'data_mapper'
+require_relative '../models/user'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
-
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner'
 
-
-# tell Capybara about our app class
 Capybara.app = MakersBnB
 
 RSpec.configure do |config|
@@ -44,3 +34,10 @@ RSpec.configure do |config|
     puts "\e[33mTry it now! Just run: rubocop\e[0m"
   end
 end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::Console,
+  # Want a nice code coverage website? Uncomment this next line!
+  # SimpleCov::Formatter::HTMLFormatter
+])
+SimpleCov.start
