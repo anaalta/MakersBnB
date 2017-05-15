@@ -1,0 +1,42 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/sandy-cochrane/Projects/MakersBnB/app.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/Users/sandy-cochrane/Projects/MakersBnB/data_mapper_setup.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1
+      ],
+      "/Users/sandy-cochrane/Projects/MakersBnB/models/user.rb": [
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1494855005
+  }
+}
