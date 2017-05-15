@@ -11,22 +11,22 @@ class MakersBnB < Sinatra::Base
   get '/' do
       erb :index
     end
-  
-  post '/home' do
+
+  post '/users/new' do
       @user = User.create(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password])
       erb :home
-    end
-  
-  
- post'/sessions' do
-   erb :index
- end 
-    
-    get '/sessions/new' do
-        user = User.authenticate(params[:email], params[:password])
-        session[:user_id] = user.id
-        erb :sessions
-    end
+  end
+
+ get '/sessions/new' do
+   erb :sessions
+ end
+
+post '/sessions' do
+    user = User.authenticate(params[:email], params[:password])
+    p params
+    session[:user_id] = @user.id
+    redirect to  '/home'
+end
 
 
   run! if app_file == $0
