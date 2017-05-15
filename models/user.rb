@@ -8,7 +8,7 @@ class User
   property :email,           String
   property :first_name,      String
   property :last_name,       String
-  property :password_hash,         Text
+  property :password_hash,   Text
 
   attr_reader :password
 
