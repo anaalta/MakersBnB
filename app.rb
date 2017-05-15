@@ -36,7 +36,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/home' do
-    "Welcome, test@example.com"
+    "Welcome, test@example.com" # -- do not leave hard coded!!
   end
 
   run! if app_file == $0
