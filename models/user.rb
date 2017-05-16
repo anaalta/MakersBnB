@@ -10,6 +10,8 @@ class User
   property :last_name,       String
   property :password_hash,   Text
 
+  has n, :listings
+
   attr_reader :password
 
   def password=(password)

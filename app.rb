@@ -43,7 +43,11 @@ class MakersBnB < Sinatra::Base
 
   post '/spaces' do
     listing = Listing.create(property: params[:property])
+    p listing
+    @listings = Listing.all
+    p @listings
     @listings << listing
+    p @listings
     erb :confirmation
   end
 

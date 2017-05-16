@@ -1,7 +1,9 @@
 class Listing
-    include DataMapper::Resource
+  
+  include DataMapper::Resource
 
-property :id,        Serial
-property :property,  String
+  property :id,        Serial
+  property :property,  String
 
+  belongs_to :user 
 end
