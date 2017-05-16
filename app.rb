@@ -3,11 +3,13 @@ require 'sinatra/base'
 require_relative './data_mapper_setup.rb'
 
 require_relative './models/user'
+require_relative './models/listing'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
 
   get '/' do
+    @listings = Listing.all
     erb :index
   end
 
@@ -33,6 +35,16 @@ class MakersBnB < Sinatra::Base
     p params
     p session
     redirect to '/home'
+  end
+
+  get '/spaces/new' do
+    erb :listings
+  end
+
+  post '/spaces' do
+    listing = Listing.create(property: params[:property])
+    @listings << listing
+    erb :confirmation
   end
 
   get '/home' do

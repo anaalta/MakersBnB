@@ -5,6 +5,7 @@ require 'simplecov-console'
 require 'web_helpers'
 require 'data_mapper'
 require_relative '../models/user'
+require_relative '../models/listing'
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara'
 require 'capybara/rspec'
