@@ -23,7 +23,7 @@ class MakersBnB < Sinatra::Base
                     first_name: params[:first_name],
                     last_name:  params[:last_name],
                     password:   params[:password], password_confirmation: params[:password_confirmation])
-    $current_user = @user
+
     if @user.save
       session[:user_id] = @user.id
       p @user.id
@@ -35,8 +35,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/dashboard' do
-      p $current_user
-      erb  :dashboard
+    erb  :dashboard
   end
 
   get '/sessions/new' do
@@ -46,31 +45,19 @@ class MakersBnB < Sinatra::Base
   post '/sessions' do
     user = User.authenticate(params[:email], params[:password])
     session[:user_id] = user.id
-    p params
-    p session
     redirect to '/dashboard'
-
-    #flash
   end
-=begin
+
   delete '/dashboard' do
-    p $current_user
     p session[:user_id] = nil
-    p $current_user
     redirect to '/'
   end
 
   delete '/users' do
-    p $current_user
     p session[:user_id] = nil
-    p $current_user
     redirect to '/'
   end
-=end
 
-  # get '/home' do
-  #   "Welcome, test@example.com" # -- do not leave hard coded!!
-  # end
 
   run! if app_file == $0
 
