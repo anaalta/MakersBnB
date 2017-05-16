@@ -1,4 +1,13 @@
 
 <h1>Welcome to MakersBNB!</h1>
+<h2>Available listings</h2>
 
-
+<ul id='listings'>
+  <% @listings.each do |listing|%>
+    <li>
+    Name: <%= listing.property_name%>
+    Description: <%= listing.description%>
+    Price per night> <%=listing.price_per_night%>
+    <%end%>
+  </li>
+</ul>

@@ -32,8 +32,6 @@ class MakersBnB < Sinatra::Base
   post '/sessions' do
     user = User.authenticate(params[:email], params[:password])
     session[:user_id] = user.id
-    p params
-    p session
     redirect to '/home'
   end
 
@@ -42,12 +40,11 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces' do
-    listing = Listing.create(property: params[:property])
-    p listing
+    listing = Listing.create(property_name: params[:property_name],
+                             description: params[:description],
+                             price_per_night: params[:price_per_night])
     @listings = Listing.all
-    p @listings
     @listings << listing
-    p @listings
     erb :confirmation
   end
 
