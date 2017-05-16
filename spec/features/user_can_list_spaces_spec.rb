@@ -5,7 +5,7 @@ feature 'User can list spaces' do
   expect(current_path).to eq ('/spaces/new')
   fill_in :property_name, with: 'my property'
   click_button 'Submit'
-  expect(page).to have_content ('Thank you for adding your space')
+  expect(page).to have_content ('my property')
   end
 
   scenario 'a signed in user can list a space with all details' do
@@ -16,7 +16,8 @@ feature 'User can list spaces' do
   fill_in :description, with: 'nice cosy place'
   fill_in :price_per_night, with: '35'
   click_button 'Submit'
-  expect(page).to have_content ('Thank you for adding your space')
+  save_and_open_page
+  expect(page).to have_content ('')
   end
 
 end

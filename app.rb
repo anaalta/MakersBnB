@@ -9,6 +9,7 @@ class MakersBnB < Sinatra::Base
   enable :sessions
 
   get '/' do
+    @user=User.new
     @listings = Listing.all
     erb :index
   end
@@ -31,7 +32,7 @@ class MakersBnB < Sinatra::Base
 
   post '/sessions' do
     user = User.authenticate(params[:email], params[:password])
-    session[:user_id] = user.id
+    p session[:user_id] = user.id
     redirect to '/home'
   end
 
@@ -43,9 +44,12 @@ class MakersBnB < Sinatra::Base
     listing = Listing.create(property_name: params[:property_name],
                              description: params[:description],
                              price_per_night: params[:price_per_night])
-    @listings = Listing.all
-    @listings << listing
-    erb :confirmation
+                             p listing
+     @listings = Listing.all
+     @listings << listing
+
+    redirect to ('/')
+    #erb :confirmation
   end
 
   get '/home' do
@@ -53,5 +57,7 @@ class MakersBnB < Sinatra::Base
   end
 
   run! if app_file == $0
+
+  
 
 end
