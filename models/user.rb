@@ -4,13 +4,15 @@ class User
   include DataMapper::Resource
   include BCrypt
 
+  attr_reader :password, :email
+  attr_accessor :password_confirmation
+
   property :id,              Serial
   property :email,           String
   property :first_name,      String
   property :last_name,       String
   property :password_hash,   Text
-
-  attr_reader :password
+  validates_confirmation_of :password
 
   def password=(password)
     @password = Password.create(password)
@@ -25,5 +27,5 @@ class User
       nil
     end
   end
-  
+
 end
