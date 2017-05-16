@@ -20,7 +20,12 @@ class MakersBnB < Sinatra::Base
                         first_name: params[:first_name],
                         last_name:  params[:last_name],
                         password:   params[:password])
+                        #password confirmation
     erb :home
+  end
+
+  get '/dashboard' do
+      erb  :dashboard
   end
 
   get '/sessions/new' do
@@ -32,12 +37,14 @@ class MakersBnB < Sinatra::Base
     session[:user_id] = user.id
     p params
     p session
-    redirect to '/home'
+    redirect to '/dashboard'
+
+    #flash
   end
 
-  get '/home' do
-    "Welcome, test@example.com" # -- do not leave hard coded!!
-  end
+  # get '/home' do
+  #   "Welcome, test@example.com" # -- do not leave hard coded!!
+  # end
 
   run! if app_file == $0
 

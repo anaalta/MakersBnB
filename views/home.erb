@@ -1,4 +1,9 @@
 <h1>You have signed up! Welcome <%=@user.email%> </h1>
 
-<p>Log Out</p>
-<p>Log In</p>
+<form action ='/' method = 'get'>
+  <input type='submit' value ='Log Out'>
+</form>
+
+<form action ='/dashboard' method = 'get'>
+  <input type='submit' value ='Go to dashboard'>
+</form>
