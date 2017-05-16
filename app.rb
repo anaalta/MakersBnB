@@ -13,21 +13,22 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/users/new' do
+    @user = User.new
     erb :new
   end
 
   post '/users' do
     @user = User.create(email:      params[:email],
-                        first_name: params[:first_name],
-                        last_name:  params[:last_name],
-                        password:   params[:password], password_confirmation: params[:password_confirmation])
+                    first_name: params[:first_name],
+                    last_name:  params[:last_name],
+                    password:   params[:password], password_confirmation: params[:password_confirmation])
 
-    if @user
+    if @user.save
       session[:user_id] = @user.id
       erb :home
     else
       flash.now[:errors] = @user.errors.full_messages
-      erb :new
+      redirect to '/users/new'
     end
   end
 
