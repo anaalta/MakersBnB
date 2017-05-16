@@ -7,6 +7,7 @@ require 'sinatra/flash'
 class MakersBnB < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
+  use Rack::MethodOverride
 
   get '/' do
     erb :index
@@ -22,10 +23,11 @@ class MakersBnB < Sinatra::Base
                     first_name: params[:first_name],
                     last_name:  params[:last_name],
                     password:   params[:password], password_confirmation: params[:password_confirmation])
-
+    $current_user = @user
     if @user.save
       session[:user_id] = @user.id
-      erb :home
+      p @user.id
+      erb :users
     else
       flash.now[:errors] = @user.errors.full_messages
       redirect to '/users/new'
@@ -33,6 +35,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/dashboard' do
+      p $current_user
       erb  :dashboard
   end
 
@@ -49,6 +52,21 @@ class MakersBnB < Sinatra::Base
 
     #flash
   end
+=begin
+  delete '/dashboard' do
+    p $current_user
+    p session[:user_id] = nil
+    p $current_user
+    redirect to '/'
+  end
+
+  delete '/users' do
+    p $current_user
+    p session[:user_id] = nil
+    p $current_user
+    redirect to '/'
+  end
+=end
 
   # get '/home' do
   #   "Welcome, test@example.com" # -- do not leave hard coded!!
