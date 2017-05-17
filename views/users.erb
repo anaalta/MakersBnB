@@ -1,0 +1,10 @@
+<h1>You have signed up! Welcome <%=@user.email%> </h1>
+
+<form action ='/' method = 'get'>
+  <input type='hidden' name='_method' value='delete'>
+  <input type='submit' value ='Sign Out'>
+</form>
+
+<form action ='/dashboard' method = 'get'>
+  <input type='submit' value ='Go to dashboard'>
+</form>
