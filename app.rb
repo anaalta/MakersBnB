@@ -61,7 +61,6 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-
     @listings = Listing.all
     current_user
     erb :spaces
@@ -84,7 +83,7 @@ class MakersBnB < Sinatra::Base
                              user_id: session[:user_id])
      @listings = Listing.all
      @listings << listing
-    redirect '/spaces'
+    redirect '/dashboard'
   end
   end
 

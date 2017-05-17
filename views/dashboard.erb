@@ -1,6 +1,5 @@
 <h1> Welcome to your dashboard </h1>
 
-
 <form action ='/' method = 'get'>
   <input type='hidden' name='_method' value='delete'>
   <input type='submit' value ='Sign Out'>
@@ -16,7 +15,7 @@
     <li>
     Name: <%= listing.property_name%>
     Description: <%= listing.description%>
-    Price per night> <%=listing.price_per_night%>
+    Price per night <%=listing.price_per_night%>
     <%end%>
   </li>
 </ul>
