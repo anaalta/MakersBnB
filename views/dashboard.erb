@@ -13,11 +13,11 @@
 <ul id='listings'>
   <% @listings.each do |listing|%>
     <li>
-    Name: <%= listing.property_name%>
+    Name:<a href="/booking/new"><%= listing.property_name%></a>
     Description: <%= listing.description%>
     Price per night: <%=listing.price_per_night%>
-    Avilable From: <%=listing.available_from%>
-    Avilable Until: <%=listing.available_until%>
+    Available From: <%=listing.available_from%>
+    Available Until: <%=listing.available_until%>
     <%end%>
   </li>
 </ul>

@@ -18,20 +18,18 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/users/new' do
-  p  @user = User.new
+    @user = User.new
     erb :new
   end
 
   post '/users' do
-  p  @user = User.create(email:  params[:email],
+    @user = User.create(email:  params[:email],
                     first_name: params[:first_name],
                     last_name:  params[:last_name],
                     password:   params[:password], password_confirmation: params[:password_confirmation])
-                    p @user
 
     if @user.save
       session[:user_id] = @user.id
-      p session[:user_id]
       erb :users
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -50,8 +48,8 @@ class MakersBnB < Sinatra::Base
 
   post '/sessions' do
     user = User.authenticate(params[:email], params[:password])
-    p user
-    p session[:user_id] = user.id
+
+    session[:user_id] = user.id
     redirect to '/dashboard'
   end
 
@@ -63,13 +61,7 @@ class MakersBnB < Sinatra::Base
   get '/spaces' do
     @listings = Listing.all
     current_user
-    erb :spaces
-  end
-
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
+    redirect to ('/dashboard')
   end
 
   post '/spaces' do
@@ -80,11 +72,17 @@ class MakersBnB < Sinatra::Base
       listing = Listing.create(property_name: params[:property_name],
                              description: params[:description],
                              price_per_night: params[:price_per_night],
+                             available_from: params[:available_from],
+                             available_until: params[:available_until],
                              user_id: session[:user_id])
      @listings = Listing.all
      @listings << listing
     redirect '/dashboard'
   end
+  end
+
+  get '/booking/new' do
+    erb :new_booking  
   end
 
   delete '/dashboard' do
@@ -93,9 +91,14 @@ class MakersBnB < Sinatra::Base
   end
 
   delete '/users' do
-    p session[:user_id] = nil
+    session[:user_id] = nil
     redirect to '/'
   end
 
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
+  end
   run! if app_file == $0
 end
