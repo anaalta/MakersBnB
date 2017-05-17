@@ -80,6 +80,8 @@ class MakersBnB < Sinatra::Base
       listing = Listing.create(property_name: params[:property_name],
                              description: params[:description],
                              price_per_night: params[:price_per_night],
+                             available_from: params[:available_from],
+                             available_until: params[:available_until],
                              user_id: session[:user_id])
      @listings = Listing.all
      @listings << listing
