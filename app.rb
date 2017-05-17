@@ -12,21 +12,22 @@ class MakersBnB < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
-    @user=User.new
+    current_user
     @listings = Listing.all
     erb :index
   end
 
   get '/users/new' do
-    @user = User.new
+  p  @user = User.new
     erb :new
   end
 
   post '/users' do
-    @user = User.create(email:  params[:email],
+  p  @user = User.create(email:  params[:email],
                     first_name: params[:first_name],
                     last_name:  params[:last_name],
                     password:   params[:password], password_confirmation: params[:password_confirmation])
+                    p @user
 
     if @user.save
       session[:user_id] = @user.id
@@ -39,6 +40,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/dashboard' do
+    @listings = Listing.all
     erb  :dashboard
   end
 
@@ -48,16 +50,20 @@ class MakersBnB < Sinatra::Base
 
   post '/sessions' do
     user = User.authenticate(params[:email], params[:password])
-    session[:user_id] = user.id
+    p user
+    p session[:user_id] = user.id
     redirect to '/dashboard'
   end
 
   get '/spaces/new' do
+    current_user
     erb :new_space
   end
 
   get '/spaces' do
-    @user = User.get(session[:user_id])
+
+    @listings = Listing.all
+    current_user
     erb :spaces
   end
 
@@ -72,13 +78,13 @@ class MakersBnB < Sinatra::Base
       flash[:errors] = "Log in to list a space."
       redirect '/'
     else
-      p @listings = Listing.create(property_name: params[:property_name],
+      listing = Listing.create(property_name: params[:property_name],
                              description: params[:description],
-                             price_per_night: params[:price_per_night])
-     p
-     p @listings = Listing.all
+                             price_per_night: params[:price_per_night],
+                             user_id: session[:user_id])
+     @listings = Listing.all
+     @listings << listing
     redirect '/spaces'
-    #erb :confirmation
   end
   end
 
