@@ -1,3 +1,12 @@
 Thank you for adding your space, <%=current_user%>!
 
-<%= @listings %>
+
+<ul id='listings'>
+  <% @listings.each do |listing|%>
+    <li>
+    Name: <%= listing.property_name%>
+    Description: <%= listing.description%>
+    Price per night> <%=listing.price_per_night%>
+    <%end%>
+  </li>
+</ul>

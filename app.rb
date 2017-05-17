@@ -12,7 +12,7 @@ class MakersBnB < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
-    @user=User.new
+    current_user
     @listings = Listing.all
     erb :index
   end
@@ -40,6 +40,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/dashboard' do
+    @listings = Listing.all
     erb  :dashboard
   end
 
@@ -60,7 +61,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    p @current_user ||= User.get(session[:user_id])
+    @listings = Listing.all
+    current_user
     erb :spaces
   end
 
