@@ -56,11 +56,12 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/new' do
-    p current_user
+    current_user
     erb :new_space
   end
 
   get '/spaces' do
+
     @listings = Listing.all
     current_user
     erb :spaces
@@ -77,14 +78,13 @@ class MakersBnB < Sinatra::Base
       flash[:errors] = "Log in to list a space."
       redirect '/'
     else
-      p listing = Listing.create(property_name: params[:property_name],
+      listing = Listing.create(property_name: params[:property_name],
                              description: params[:description],
                              price_per_night: params[:price_per_night],
                              user_id: session[:user_id])
-     p @listings = Listing.all
-     p @listings << listing
+     @listings = Listing.all
+     @listings << listing
     redirect '/spaces'
-    #erb :confirmation
   end
   end
 
