@@ -9,7 +9,6 @@ feature 'User can list spaces' do
   fill_in :price_per_night, with: '35'
   click_button 'Submit'
   save_and_open_page
-  expect(page).to have_content ("Thank you for adding your space")
   expect(page).to have_content (:property_name)
   expect(page).to have_content (:description)
   expect(page).to have_content (:price_per_night)

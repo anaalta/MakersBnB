@@ -12,6 +12,10 @@ feature 'select dates when property is available' do
     fill_in :available_until, with: '22/06/2017'
     click_button 'Submit'
     expect(current_path).to eq ('/dashboard')
-    expect(page).to have_content :property_name, :description, :price_per_night, :available_from, :available_until
+    expect(page).to have_content :property_name 
+    expect(page).to have_content :description 
+    expect(page).to have_content :price_per_night
+    expect(page).to have_content :available_from 
+    expect(page).to have_content :available_until
   end
 end
