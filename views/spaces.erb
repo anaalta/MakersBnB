@@ -1,5 +1,5 @@
 
-Thank you for adding your space, <%=current_user%>!
+Thank you for adding your space, <%=current_user.first_name%>!
 
 
 <ul id='listings'>
@@ -7,7 +7,7 @@ Thank you for adding your space, <%=current_user%>!
     <li>
     Name: <%= listing.property_name%>
     Description: <%= listing.description%>
-    Price per night> <%=listing.price_per_night%>
+    Price per night: <%=listing.price_per_night%>
     <%end%>
   </li>
 </ul>
