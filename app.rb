@@ -7,6 +7,7 @@ require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
+  set :session_secret, 'super secret'
   register Sinatra::Flash
   use Rack::MethodOverride
 
@@ -29,7 +30,7 @@ class MakersBnB < Sinatra::Base
 
     if @user.save
       session[:user_id] = @user.id
-      p @user.id
+      p session[:user_id]
       erb :users
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -52,17 +53,33 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/new' do
-    erb :listings
+    erb :new_space
+  end
+
+  get '/spaces' do
+    @user = User.get(session[:user_id])
+    erb :spaces
+  end
+
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
   end
 
   post '/spaces' do
-    listing = Listing.create(property_name: params[:property_name],
+    if current_user.nil?
+      flash[:errors] = "Log in to list a space."
+      redirect '/'
+    else
+      p @listings = Listing.create(property_name: params[:property_name],
                              description: params[:description],
                              price_per_night: params[:price_per_night])
-                             p listing
-     @listings = Listing.all
-     @listings << listing
-    redirect to ('/')
+     p
+     p @listings = Listing.all
+    redirect '/spaces'
+    #erb :confirmation
+  end
   end
 
   delete '/dashboard' do
