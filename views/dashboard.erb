@@ -12,7 +12,10 @@
 
 <ol id='listings'>
   <% @listings.each do |listing|%>
-    <li><button id = 'bookMe'>Book Me</button>
+    <li>
+      <form action = '/booking/new' method = 'get'>
+      <button id = 'bookme' >Book Me</button>
+    </form>
     Name: <%= listing.property_name%></a>
     Description: <%= listing.description%>
     Price per night: <%=listing.price_per_night%>
