@@ -47,6 +47,27 @@
         1,
         null,
         null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/danielcostea/Desktop/MakersBnB/spec/features/user_can_list_spaces_spec.rb": [
@@ -132,6 +153,6 @@
         null
       ]
     },
-    "timestamp": 1495123746
+    "timestamp": 1495124064
   }
 }
