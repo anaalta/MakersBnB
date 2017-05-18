@@ -81,8 +81,9 @@ class MakersBnB < Sinatra::Base
   end
   end
 
-  get '/booking/new' do
-    erb :new_booking  
+  get '/booking/:listing' do
+    params[:listing] =
+    erb :new_booking
   end
 
   delete '/dashboard' do
