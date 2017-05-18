@@ -13,7 +13,7 @@
 <ol id='listings'>
   <% @listings.each do |listing|%>
     <li>
-      <form action = "/booking" method = 'get'>
+      <form action = "/booking/new" method = 'get'>
         <input type='hidden' name='property_id' value=<%=listing.id%>>
         <button id='bookme'>Book Me</button>
       </form>
