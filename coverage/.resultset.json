@@ -1,6 +1,15 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/danielcostea/Desktop/MakersBnB/spec/features/available_space_for_night_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/danielcostea/Desktop/MakersBnB/spec/features/sign_in_spec.rb": [
         1,
         null,
@@ -153,6 +162,6 @@
         null
       ]
     },
-    "timestamp": 1495124064
+    "timestamp": 1495126482
   }
 }
