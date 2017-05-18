@@ -81,8 +81,8 @@ class MakersBnB < Sinatra::Base
   end
   end
 
-  get '/booking/:listing' do
-    params[:listing] =
+  get '/booking' do
+    @listing = Listing.get(params[:property_id])
     erb :new_booking
   end
 

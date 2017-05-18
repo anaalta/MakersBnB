@@ -13,14 +13,15 @@
 <ol id='listings'>
   <% @listings.each do |listing|%>
     <li>
-      <form action = "/booking/:listing" method = 'get'>
-      <button id = 'bookme' >Book Me</button>
-    </form>
-    Name: <%= listing.property_name%></a>
-    Description: <%= listing.description%>
-    Price per night: <%=listing.price_per_night%>
-    Available From: <%=listing.available_from%>
-    Available Until: <%=listing.available_until%>
-    <%end%>
-  </li>
-</ol>
+      <form action = "/booking" method = 'get'>
+        <input type='hidden' name='property_id' value=<%=listing.id%>>
+        <button id='bookme'>Book Me</button>
+      </form>
+      Name: <%= listing.property_name%>
+      Description: <%= listing.description%>
+      Price per night: <%=listing.price_per_night%>
+      Available From: <%=listing.available_from%>
+      Available Until: <%=listing.available_until%>
+      <%end%>
+    </li>
+  </ol>
