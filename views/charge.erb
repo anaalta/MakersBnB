@@ -1,14 +1,3 @@
-<h2> Here are the details of your booking:  </h2>
-
-<%= @listing.property_name%>
-
-
-<form action ="/dashboard" method= 'get'>
-  <input type='submit' name='book_again' value ="Book another place">
-</form>
-
-<h3> Please made a payment to finalise your booking</h3>
-
 <form action="/charge" method="post" class="payment">
     <article>
       <label class="amount">

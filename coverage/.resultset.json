@@ -10,6 +10,17 @@
         null,
         null
       ],
+      "/Users/danielcostea/Desktop/MakersBnB/spec/features/charge_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/danielcostea/Desktop/MakersBnB/spec/features/sign_in_spec.rb": [
         1,
         null,
@@ -162,6 +173,6 @@
         null
       ]
     },
-    "timestamp": 1495126482
+    "timestamp": 1495190435
   }
 }

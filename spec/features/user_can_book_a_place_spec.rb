@@ -37,7 +37,7 @@ feature 'Users can book spaces' do
     fill_in :start_date, with: '01/01/2017'
     fill_in :end_date, with: '10/01/2017'
     click_on 'Confirm booking'
-    expect(page).to have_content('Your booking was succesfull')
+    expect(page).to have_content('Here are the details of your booking:')
   end
 
 end
