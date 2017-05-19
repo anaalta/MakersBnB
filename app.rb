@@ -3,6 +3,7 @@ require 'sinatra/base'
 require_relative './data_mapper_setup.rb'
 require_relative './models/user'
 require_relative './models/listing'
+require_relative './models/booking'
 require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
@@ -88,7 +89,9 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/booking" do
-    @listing =Listing.get(session[:property_id])
+    p @listing =Listing.get(session[:property_id])
+    p @booking = Booking.create(start_date: params[:start_date],
+                              end_date: params[:end_date])
     erb :booking_confirmation
   end
 

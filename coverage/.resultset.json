@@ -1,20 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/available_space_for_night_spec.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/sign_in_spec.rb": [
-        1,
-        null,
-        1,
-        1,
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/available_space_for_night_spec.rb": [
         1,
         1,
         null,
@@ -23,7 +10,20 @@
         null,
         null
       ],
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/sign_out_spec.rb": [
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/sign_in_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/sign_out_spec.rb": [
         1,
         null,
         1,
@@ -34,15 +34,14 @@
         null,
         null
       ],
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/user_can_book_a_place_spec.rb": [
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/user_can_book_a_place_spec.rb": [
         1,
         1,
         1,
         1,
         1,
-        1,
-        1,
-        1,
+        null,
+        null,
         1,
         1,
         1,
@@ -57,20 +56,38 @@
         null,
         null,
         null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/user_can_list_spaces_spec.rb": [
         1,
         null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
         1,
         1,
         1,
@@ -79,25 +96,7 @@
         null,
         null
       ],
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/user_can_list_spaces_spec.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null
-      ],
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/user_sets_available_dates_spec.rb": [
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/user_sets_available_dates_spec.rb": [
         1,
         null,
         1,
@@ -120,7 +119,7 @@
         null,
         null
       ],
-      "/Users/danielcostea/Desktop/MakersBnB/spec/features/user_signs_up_spec.rb": [
+      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/user_signs_up_spec.rb": [
         1,
         null,
         1,
@@ -162,6 +161,6 @@
         null
       ]
     },
-    "timestamp": 1495126482
+    "timestamp": 1495189488
   }
 }
