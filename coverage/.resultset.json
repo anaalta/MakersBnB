@@ -9,8 +9,20 @@
         null,
         null,
         null
+
+      "/Users/danielcostea/Desktop/MakersBnB/spec/features/charge_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
       ],
-      "/Users/anamariasuciu/Documents/MakersBnB/spec/features/sign_in_spec.rb": [
+      "/Users/danielcostea/Desktop/MakersBnB/spec/features/sign_in_spec.rb": [
+
         1,
         null,
         1,
@@ -161,6 +173,9 @@
         null
       ]
     },
+
     "timestamp": 1495189488
+
+
   }
 }

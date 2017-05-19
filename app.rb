@@ -5,12 +5,16 @@ require_relative './models/user'
 require_relative './models/listing'
 require_relative './models/booking'
 require 'sinatra/flash'
+require 'stripe'
 
 class MakersBnB < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
   register Sinatra::Flash
   use Rack::MethodOverride
+  set :publishable_key, ENV['PUBLISHABLE_KEY']
+  set :secret_key, ENV['SECRET_KEY']
+  Stripe.api_key = settings.secret_key
 
   get '/' do
     current_user
@@ -49,9 +53,9 @@ class MakersBnB < Sinatra::Base
 
   post '/sessions' do
     user = User.authenticate(params[:email], params[:password])
-
     session[:user_id] = user.id
     redirect to '/dashboard'
+
   end
 
   get '/spaces/new' do
@@ -106,6 +110,25 @@ class MakersBnB < Sinatra::Base
     session[:user_id] = nil
     redirect to '/'
   end
+  
+  post '/charge' do
+  # Amount in cents
+  @amount = 500
+
+  customer = Stripe::Customer.create(
+    :email => 'customer@example.com',
+    :source  => params[:stripeToken]
+  )
+
+  charge = Stripe::Charge.create(
+    :amount      => @amount,
+    :description => 'Sinatra Charge',
+    :currency    => 'usd',
+    :customer    => customer.id
+  )
+
+  erb :payment_confirmation
+end
 
   delete '/users' do
     session[:user_id] = nil
