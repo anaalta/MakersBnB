@@ -1,0 +1,20 @@
+h1 {
+  color: #8f246b;
+}
+
+body {
+  position:relative;
+  -webkit-background-size:cover;
+  background-image:url(http://i.huffpost.com/gen/1115746/images/h-AIRBNB-628x314.jpg);
+}
+
+#wrapper {
+  padding-left: 40px;
+}
+
+li {
+  line-height: 40px;
+  font-weight: bold;
+  color: #333;
+
+}
