@@ -1,8 +1,11 @@
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css ' rel='stylesheet'>
+<link href='/styles.css' rel='stylesheet'>
+
 <h1> Welcome to your dashboard </h1>
 
 <form action ='/' method = 'get'>
   <input type='hidden' name='_method' value='delete'>
-  <input type='submit' value ='Sign Out'>
+  <input class='btn' type='submit' value ='Sign Out'>
 </form>
 
 <form action = '/spaces/new' method = 'get'>
@@ -20,7 +23,7 @@
       <br>
       <form action = "/booking/new" method = 'get'>
         <input type='hidden' name='property_id' value=<%=listing.id%>>
-        <button id='bookme'>Book Me</button>
+        <button class='btn' id='bookme'>Book Me</button>
       </form>
       <%end%>
     </li>
