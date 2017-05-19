@@ -99,6 +99,7 @@ class MakersBnB < Sinatra::Base
                                 listing_id: session[:property_id],
                                 user_id: session[:user_id])
     @bookings = Booking.all
+    #@booking.total_price = ((@booking.end_date - @booking.start_date-1)*@listing.price_per_night).to_f
     @bookings << @booking
     if @booking.start_date < @listing.available_from
     flash.now[:notice1] = "Start date is not available"
@@ -115,16 +116,13 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/charge' do
-  # Amount in cents
-  @amount = 500
-
   customer = Stripe::Customer.create(
     :email => 'customer@example.com',
     :source  => params[:stripeToken]
   )
 
   charge = Stripe::Charge.create(
-    :amount      => @amount,
+    :amount      => ((@booking.end_date - @booking.start_date-1)*@listing.price_per_night).to_f,
     :description => 'Sinatra Charge',
     :currency    => 'usd',
     :customer    => customer.id
