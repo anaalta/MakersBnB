@@ -1,0 +1,9 @@
+<h1> Book this property <%=@listing.property_name%> </h1>
+<h3>When do you arrive?</h3>
+<form action = '/booking' method = 'post'>
+   <label>Start date:</label>
+  <input type = 'date' name = 'start_date'>
+  <label> End date:</label>
+  <input type = 'date' name = 'end_date'>
+  <input type = 'submit' name = 'confirm_booking' value = 'Confirm booking'>
+</form>

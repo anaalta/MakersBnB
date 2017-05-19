@@ -82,7 +82,14 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/booking/new' do
-    erb :new_booking  
+    @listing = Listing.get(params[:property_id])
+    session[:property_id] = params[:property_id]
+    erb :new_booking
+  end
+
+  post "/booking" do
+    @listing =Listing.get(session[:property_id])
+    erb :booking_confirmation
   end
 
   delete '/dashboard' do
