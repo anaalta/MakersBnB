@@ -92,7 +92,14 @@ class MakersBnB < Sinatra::Base
     p @listing =Listing.get(session[:property_id])
     p @booking = Booking.create(start_date: params[:start_date],
                               end_date: params[:end_date])
-    erb :booking_confirmation
+
+    if @booking.start_date < @listing.available_from
+    flash.now[:notice1] = "Start date is not available"
+    elsif @booking.end_date > @listing.available_until
+    flash.now[:notice2] = "End date is not available"
+     else
+      erb :booking_confirmation
+    end
   end
 
   delete '/dashboard' do
