@@ -12,7 +12,9 @@ class User
   property :first_name,      String,  required: true
   property :last_name,       String,  required: true
   property :password_hash,   Text
+
   has n, :listings
+  has n, :bookings
 
   validates_confirmation_of :password
   validates_presence_of :email

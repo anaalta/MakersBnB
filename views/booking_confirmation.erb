@@ -18,7 +18,7 @@ Total price:
 <form action="/charge" method="post" class="payment">
     <article>
       <label class="amount">
-        <span>Amount: $5.00</span>
+        <span>Amount: <%((@booking.end_date - @booking.start_date-1)*@listing.price_per_night).to_f%></span>
       </label>
     </article>
 
