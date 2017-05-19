@@ -11,7 +11,8 @@ gem 'dm-postgres-adapter'
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-flash'
-
+gem "mailgun-ruby"
+gem "rest-client"
 # gem 'rack', '2.0.1'
 
 group :test do

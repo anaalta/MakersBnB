@@ -4,6 +4,7 @@ require_relative './data_mapper_setup.rb'
 require_relative './models/user'
 require_relative './models/listing'
 require 'sinatra/flash'
+MAILGUN_API_KEY = ['**********e988d']
 
 class MakersBnB < Sinatra::Base
   enable :sessions
@@ -30,7 +31,7 @@ class MakersBnB < Sinatra::Base
 
     if @user.save
       session[:user_id] = @user.id
-      erb :users
+      redirect to '/send/complex_email'
     else
       flash.now[:errors] = @user.errors.full_messages
       redirect to '/users/new'
@@ -48,6 +49,23 @@ class MakersBnB < Sinatra::Base
     @user.update(:confirmed => true)
     erb :registration_successful
   end
+
+  get "/send/complex_email" do
+    mailgun = Mailgun::Client.new MAILGUN_API_KEY
+    message = Mailgun::MessageBuilder.new
+
+    message.add_recipient  :to, params[:recipient]
+    message.add_recipient  :from, "Mailgun User <mailgun@#{MAILGUN_DOMAIN_NAME}>"
+    message.subject        "Complex Mailgun Example"
+    message.body_text      "Plaintext content"
+    message.body_html      "<html>HTML <strong>content</strong></html>"
+    message.add_attachment "./example-attachment.txt", "attachment"
+
+    mailgun.send_message MAILGUN_DOMAIN_NAME, message
+
+    "Email sent."
+    erb :registration_pending
+ end
 
   get '/dashboard' do
     @listings = Listing.all
