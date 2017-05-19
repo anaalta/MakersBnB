@@ -3,6 +3,7 @@ require 'sinatra/base'
 require_relative './data_mapper_setup.rb'
 require_relative './models/user'
 require_relative './models/listing'
+require_relative './models/booking'
 require 'sinatra/flash'
 require 'stripe'
 
@@ -92,8 +93,17 @@ class MakersBnB < Sinatra::Base
   end
 
   post "/booking" do
-    @listing =Listing.get(session[:property_id])
-    erb :booking_confirmation
+    p @listing =Listing.get(session[:property_id])
+    p @booking = Booking.create(start_date: params[:start_date],
+                              end_date: params[:end_date])
+
+    if @booking.start_date < @listing.available_from
+    flash.now[:notice1] = "Start date is not available"
+    elsif @booking.end_date > @listing.available_until
+    flash.now[:notice2] = "End date is not available"
+     else
+      erb :booking_confirmation
+    end
   end
 
   delete '/dashboard' do

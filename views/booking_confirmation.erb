@@ -1,10 +1,16 @@
+
 <h2> Here are the details of your booking:  </h2>
 
-<%= @listing.property_name%>
 
+<%= @listing.property_name%><br>
+Number of nights:
+<%=(@booking.end_date - @booking.start_date-1).to_i%><br>
+Total price:
+<%=((@booking.end_date - @booking.start_date-1)*@listing.price_per_night).to_f%>
+£
 
-<form action ="/dashboard" method= 'get'>
-  <input type='submit' name='book_again' value ="Book another place">
+<form action="/dashboard" method='get'>
+  <input type='submit' name='book_again' value="Book another place">
 </form>
 
 <h3> Please made a payment to finalise your booking</h3>

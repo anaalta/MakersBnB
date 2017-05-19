@@ -9,19 +9,19 @@
   <button name = 'add_a_space' type = 'submit'>Add your space here!</button>
 </form>
 
-
 <ol id='listings'>
   <% @listings.each do |listing|%>
     <li>
-      <form action = "/booking/new" method = 'get'>
-        <input type='hidden' name='property_id' value=<%=listing.id%>>
-        <button id='bookme'>Book Me</button>
-      </form>
       Name: <%= listing.property_name%>
       Description: <%= listing.description%>
       Price per night: <%=listing.price_per_night%>
       Available From: <%=listing.available_from%>
       Available Until: <%=listing.available_until%>
+      <br>
+      <form action = "/booking/new" method = 'get'>
+        <input type='hidden' name='property_id' value=<%=listing.id%>>
+        <button id='bookme'>Book Me</button>
+      </form>
       <%end%>
     </li>
   </ol>
