@@ -11,6 +11,8 @@ gem 'dm-postgres-adapter'
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-flash'
+gem 'stripe'
+
 # gem 'rack', '2.0.1'
 
 group :test do

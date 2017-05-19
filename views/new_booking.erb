@@ -1,0 +1,23 @@
+<% if flash[:notice1] %>
+<div id='notice1'> <%= flash[:notice1] %>
+<form action='/booking/new' method='get'>
+<input type='submit' name='back_to_booking' value='Go Back to Booking'>
+</form>
+</div>
+<% elsif flash[:notice2] %>
+<div id='notice2'> <%= flash[:notice2] %>
+<form action='/booking/new' method='get'>
+<input type='submit' name='back_to_booking' value='Go Back to Booking'>
+</form>
+</div>
+<% end %>
+
+<h1> Book this property <%=@listing.property_name%> </h1>
+<h3>When do you arrive?</h3>
+<form action = '/booking' method = 'post'>
+   <label>Start date:</label>
+  <input type = 'date' name = 'start_date'>
+  <label> End date:</label>
+  <input type = 'date' name = 'end_date'>
+  <input type = 'submit' name = 'confirm_booking' value = 'Confirm booking'>
+</form>

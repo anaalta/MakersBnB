@@ -1,0 +1,30 @@
+
+<h2> Here are the details of your booking:  </h2>
+
+
+<%= @listing.property_name%><br>
+Number of nights:
+<%= (@booking.end_date - @booking.start_date).to_i%><br>
+Total price:
+<%= ((@booking.end_date - @booking.start_date-1)*@listing.price_per_night).to_f %>
+ £
+
+<form action="/dashboard" method='get'>
+  <input type='submit' name='book_again' value="Book another place">
+</form>
+
+<h3> Please made a payment to finalise your booking</h3>
+
+<form action="/charge" method="post" class="payment">
+    <article>
+      <label class="amount">
+        <span>Amount: </span><%= ((@booking.end_date - @booking.start_date-1)*@listing.price_per_night).to_f %> £
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= settings.publishable_key %>"
+            data-description="A month's subscription"
+            data-amount="500"
+            data-locale="auto"></script>
+  </form>

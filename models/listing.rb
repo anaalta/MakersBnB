@@ -1,3 +1,4 @@
+require 'date'
 class Listing
 
   include DataMapper::Resource
@@ -8,6 +9,7 @@ class Listing
   property :price_per_night, Fixnum
   property :available_from,  Date
   property :available_until, Date
-  
+
   belongs_to :user
+  has n, :bookings
 end
