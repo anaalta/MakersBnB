@@ -37,6 +37,18 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  get '/registration-confirmation/:user_id' do
+    @user = User.get(params[:user_id])
+    session[:user_id] = @user.id
+    erb :registration_confirmation
+  end
+
+  post '/registration-successful' do
+    @user = User.get(session[:user_id])
+    @user.update(:confirmed => true)
+    erb :registration_successful
+  end
+
   get '/dashboard' do
     @listings = Listing.all
     erb  :dashboard

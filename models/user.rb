@@ -12,12 +12,16 @@ class User
   property :first_name,      String,  required: true
   property :last_name,       String,  required: true
   property :password_hash,   Text
-  has n, :listings
+  property :confirmed,       Boolean, :default  => false
+  has n,   :listings
 
   validates_confirmation_of :password
   validates_presence_of :email
   validates_format_of :email, :as => :email_address
 
+  def confirm_registration
+    send_confirmation_email
+  end
 
   def password=(password)
     @password = Password.create(password)
@@ -27,7 +31,11 @@ class User
   def self.authenticate(email, password)
     user = first(email: email)
     if user && BCrypt::Password.new(user.password_hash) == password
-      user
+      if user.confirmed
+        user
+      else
+        nil
+      end
     else
       nil
     end
